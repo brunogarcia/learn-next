@@ -14,7 +14,6 @@ import { useFormState } from 'react-dom';
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   const initialState = { message: null, errors: {} };
-
   const [state, dispatch] = useFormState(createInvoice, initialState);
 
   return (
@@ -99,6 +98,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                   type="radio"
                   value="pending"
                   className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+                  aria-describedby="status-error"
                 />
                 <label
                   htmlFor="pending"
@@ -107,6 +107,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                   Pending <ClockIcon className="h-4 w-4" />
                 </label>
               </div>
+
               <div className="flex items-center">
                 <input
                   id="paid"
@@ -137,6 +138,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
         </fieldset>
       </div>
 
+      {/* Form actions */}
       <div className="mt-6 flex justify-end gap-4">
         <Link
           href="/dashboard/invoices"
